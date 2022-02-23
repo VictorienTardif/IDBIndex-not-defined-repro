@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "projects": {
+    "idbindex-not-defined-repro": {
+      "projectType": "application",
+      "root": "apps/idbindex-not-defined-repro",
+      "sourceRoot": "apps/idbindex-not-defined-repro/src",
+      "prefix": "victorien-tardif",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/idbindex-not-defined-repro/browser",
+            "index": "apps/idbindex-not-defined-repro/src/index.html",
+            "main": "apps/idbindex-not-defined-repro/src/main.ts",
+            "polyfills": "apps/idbindex-not-defined-repro/src/polyfills.ts",
+            "tsConfig": "apps/idbindex-not-defined-repro/tsconfig.app.json",
+            "assets": [
+              "apps/idbindex-not-defined-repro/src/favicon.ico",
+              "apps/idbindex-not-defined-repro/src/assets"
+            ],
+            "styles": [
+              "apps/idbindex-not-defined-repro/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/idbindex-not-defined-repro/src/environments/environment.ts",
+                  "with": "apps/idbindex-not-defined-repro/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "idbindex-not-defined-repro:build:production"
+            },
+            "development": {
+              "browserTarget": "idbindex-not-defined-repro:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "idbindex-not-defined-repro:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/idbindex-not-defined-repro/src/**/*.ts",
+              "apps/idbindex-not-defined-repro/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/idbindex-not-defined-repro"
+          ],
+          "options": {
+            "jestConfig": "apps/idbindex-not-defined-repro/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/idbindex-not-defined-repro/server",
+            "main": "apps/idbindex-not-defined-repro/server.ts",
+            "tsConfig": "apps/idbindex-not-defined-repro/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/idbindex-not-defined-repro/src/environments/environment.ts",
+                  "with": "apps/idbindex-not-defined-repro/src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      },
+      "tags": []
+    },
+    "idbindex-not-defined-repro-e2e": {
+      "root": "apps/idbindex-not-defined-repro-e2e",
+      "sourceRoot": "apps/idbindex-not-defined-repro-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/idbindex-not-defined-repro-e2e/cypress.json",
+            "devServerTarget": "idbindex-not-defined-repro:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "idbindex-not-defined-repro:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "options": {
+            "lintFilePatterns": [
+              "apps/idbindex-not-defined-repro-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "idbindex-not-defined-repro"
+      ]
+    }
+  }
+}
